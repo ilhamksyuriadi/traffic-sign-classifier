@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: traffic-sign-config
+  labels:
+    app: traffic-sign-classifier
+data:
+  # Configuration values
+  MODEL_PATH: "model/traffic_sign_classifier.h5"
+  IMG_SIZE: "48"
+  LOG_LEVEL: "INFO"

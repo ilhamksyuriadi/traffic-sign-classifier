@@ -1,0 +1,59 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: traffic-sign-classifier
+  labels:
+    app: traffic-sign-classifier
+spec:
+  # Number of Pod replicas to run
+  replicas: 2
+  
+  # How to find the Pods this Deployment manages
+  selector:
+    matchLabels:
+      app: traffic-sign-classifier
+  
+  # Template for creating Pods
+  template:
+    metadata:
+      labels:
+        app: traffic-sign-classifier
+    spec:
+      containers:
+      - name: traffic-sign-api
+        # Docker image to use
+        image: traffic-sign-classifier:v1
+        # Don't pull from Docker Hub (use local image)
+        imagePullPolicy: Never
+        
+        ports:
+        - containerPort: 5000
+          name: http
+        
+        # Resource limits
+        resources:
+          requests:
+            memory: "512Mi"
+            cpu: "250m"
+          limits:
+            memory: "1Gi"
+            cpu: "500m"
+        
+        # Health checks
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 5000
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          timeoutSeconds: 5
+          failureThreshold: 3
+        
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 5000
+          initialDelaySeconds: 10
+          periodSeconds: 5
+          timeoutSeconds: 3
+          failureThreshold: 3

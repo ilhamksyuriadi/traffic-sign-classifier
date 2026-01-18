@@ -1,0 +1,41 @@
+# Virtual environment
+venv/
+env/
+
+# Dataset (too large)
+data/
+
+# Jupyter notebooks
+*.ipynb
+.ipynb_checkpoints/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Git
+.git/
+.gitignore
+
+# Logs
+*.log
+
+# Test files
+test_api.py
+
+# Documentation
+README.md
