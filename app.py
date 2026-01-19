@@ -159,7 +159,7 @@ def main():
     with st.sidebar:
         st.markdown("## ℹ️ About")
         st.markdown("""
-        This application uses a **Convolutional Neural Network (CNN)** 
+        This application uses a **Convolutional Neural Network (CNN)** with custom architecture
         trained on the German Traffic Sign Recognition Benchmark (GTSRB) dataset.
         
         **Features:**
@@ -167,8 +167,7 @@ def main():
         - Real-time classification
         - Confidence scores
         - Top 5 predictions
-        
-        **Model:** MobileNetV2 with Transfer Learning
+
         """)
         
         st.markdown("---")
